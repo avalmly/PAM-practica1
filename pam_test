@@ -2,7 +2,6 @@
 session required pam_python.so /root/modulo.py
 auth required pam_python.so /root/modulo.py
 auth required pam_python.so /root/modulo2.py
-auth sufficient pam_python.so /root/modulo2.py
-auth requisite pam_python.so /root/modulo3.py
-auth sufficient pam_python.so /root/modulo3.py
+auth [success=done default=reset] pam_python.so /root/modulo2.py
+auth [success=ok default=die] pam_python.so /root/modulo3.py
 account required pam_python.so /root/modulo.py
